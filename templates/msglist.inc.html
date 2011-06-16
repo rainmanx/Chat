@@ -1,0 +1,34 @@
+<div id="chatList">
+<ul>
+{% for msg in msgs %} 
+	<li id="{{msg.pk}}" class="clearit">
+		<div class="icon">
+			<img src="{{ msg.user.get_profile.profile_img.url }}" class="avatar" align="absmiddle" />
+		</div>
+		<div class="bubble">
+			<div class="msg-header">
+				<span class="screen-name">{{msg.user.username}}</span>
+				{% if msg.title %}
+				<span class="title">:{{msg.title}}</span>
+				{% endif %}
+				{% if msg.fav_num %}
+				<span class="favnum">{{msg.fav_num}} fav</span>
+				{% endif %}
+			</div>
+			<div id="content_{{msg.pk}}"  class="content" >{{msg.content}}</div>
+			<div class="time">
+				<span class="timestamp">{{msg.date|date:"Y-m-d H:i:s"}}</span>
+				<a title="Reply" id="reply_num" class="reply-action" href="javascript:reply({{msg.pk}},{{msg.user.pk}},'{{msg.user.username}}');"><b>回复</b></a>
+				<a title="Quote" id="quote_num" class="quote-action" href="javascript:quote('{{msg.user.username}}','{{msg.date|date:"Y-m-d H:i:s"}}',{{msg.pk}});"><b>引用</b></a>
+				<a title="Fav" id="fav_num" class="fav-action" href="/fav/?msg_id={{msg.pk}}"><b>收藏</b></a>
+			</div>
+			{% if msg.reply_msg %}
+			<div class="in_reply_to">					
+				<a href="/statuses/?msg_id={{msg.pk}}">in replay to</a>
+			</div>
+			{% endif %}
+		</div>	
+	</li> 
+{% endfor %}	
+</ul>
+</div>	

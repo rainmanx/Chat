@@ -1,0 +1,233 @@
+/* Gobal */
+body {
+    background-color: #FFFFFF;
+    /*background-image: url("/static/img/bohemian.jpg");*/
+    font-family: "Helvetica Neue","Luxi Sans","DejaVu Sans",Tahoma,"Hiragino Sans GB",STHeiti !important;
+    margin: 0;
+    padding: 0;
+}
+
+ul, ol {
+    list-style: none outside none;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+input.text {
+    width: 240px;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px 3px 3px 3px;
+}
+
+input.text:focus {
+    border-color: rgba(82, 168, 236, 0.75) !important;
+    box-shadow: 0 0 8px rgba(82, 168, 236, 0.5);
+}
+
+/* ------------------------------------------------------------------------------------------------------------- BUTTON */
+
+.button { 
+    position: relative; 
+    overflow: visible; 
+    display: inline-block; 
+    padding: 0.5em 1em; 
+    border: 1px solid #d4d4d4; 
+    margin: 0;
+    text-decoration: none; 
+    text-shadow: 1px 1px 0 #fff; 
+    font:11px/normal sans-serif; 
+    color: #333; 
+    white-space: nowrap; 
+    cursor: pointer; 
+    outline: none; 
+    background-color: #ececec;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f4f4f4), to(#ececec));
+    background-image: -moz-linear-gradient(#f4f4f4, #ececec);
+    background-image: -o-linear-gradient(#f4f4f4, #ececec);
+    background-image: linear-gradient(#f4f4f4, #ececec);
+    -webkit-background-clip: padding;
+    -moz-background-clip: padding;
+    -o-background-clip: padding-box; 
+    /*background-clip: padding-box;*/ /* commented out due to Opera 11.10 bug */
+    -webkit-border-radius: 0.2em; 
+    -moz-border-radius: 0.2em; 
+    border-radius: 0.2em; 
+    /* IE hacks */
+    zoom: 1; 
+    *display: inline; 
+}
+
+.button:hover,
+.button:focus,
+.button:active {
+    border-color: #3072b3;
+    border-bottom-color: #2a65a0;
+    text-decoration: none; 
+    text-shadow: -1px -1px 0 rgba(0,0,0,0.3); 
+    color: #fff; 
+    background-color: #3072b3;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#599bdc), to(#3072b3));
+    background-image: -moz-linear-gradient(#599bdc, #3072b3);
+    background-image: -o-linear-gradient(#599bdc, #3072b3);
+    background-image: linear-gradient(#599bdc, #3072b3);
+}
+
+.button:active,
+.button.active {
+    border-color: #2a65a0;
+    border-bottom-color: #3884CF;
+    color: #fff; 
+    background-color: #3072b3;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3072b3), to(#599bdc));
+    background-image: -moz-linear-gradient(#3072b3, #599bdc);
+    background-image: -o-linear-gradient(#3072b3, #599bdc);
+    background-image: linear-gradient(#3072b3, #599bdc);
+}
+
+#searchBar input#search_btn {
+    background: url("/static/img/search.png") no-repeat scroll 0 0 transparent;
+    border: medium none;
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    margin: 0 5px 0 0;
+    text-indent: -9999px;
+}
+/* */
+#refresh {
+    display:none;
+}
+
+#nav,#header {
+    margin: 0 auto;
+    width: 960px;
+    overflow: hidden;
+}
+
+#nav {
+    background-color: #E9F4E9;
+}
+
+#home-pg {
+    float: left;
+    margin: 5px;
+}
+
+#user-info {
+    float: right;
+    margin: 5px;
+}
+
+#user-info a {
+    margin-left: 10px;
+}
+
+#searchBar {
+    float: right;
+}
+
+#wrapper {
+    overflow: hidden;
+    margin: 0 auto;
+    width: 960px;
+}
+
+#main-content {
+    clear: both;
+    float:left;
+    width: 628px;
+}
+
+#dashboard {
+    float:right;
+    width: 300px;
+}
+
+#chatBox {
+    clear: both;
+    margin: 0 auto;
+    width: 628px;
+}
+
+#chatList {
+    margin: 0 auto;
+    width: 628px;
+}
+
+#chatList ul{
+    width: 628px;
+    background-color: #F8F8F8;
+    border: 1px solid #CCCCCC;
+    border-radius: 6px 6px 6px 6px;
+}
+
+form#messageForm {
+    width: 628px;
+}
+
+textarea#message {
+    border: 1px solid #CCCCCC;
+    border-radius: 5px 5px 5px 5px;
+    display: block;
+    font-size: 14px;
+    height: 100px;
+    padding: 3px;
+    margin: 10px 0;
+    width: 620px;
+}
+
+textarea#message:focus {
+    border-color: rgba(82, 168, 236, 0.75) !important;
+    box-shadow: 0 0 8px rgba(82, 168, 236, 0.5);
+}
+
+li.clearit {
+    overflow: auto;
+    border-bottom: 1px solid #E2E2E2;
+    line-height: 16px;
+    padding: 10px;
+}
+
+li.last-new-msg {
+    border-bottom: 1px solid #B3B3B3 !important;
+}
+
+.icon {
+    float: left;
+}
+
+.bubble {
+    float: left;
+    margin-left: 10px;
+}
+
+.screen-name {
+    color: #333333 !important;
+    font-weight: bold;
+}
+
+.title {
+    color: #014C90;
+}
+
+.content {
+    width: 550px;
+    line-height: 19px;
+    word-wrap: break-word;
+    word-break:break-all;
+    margin: 5px auto;
+}
+
+.time {
+    color: #666666;
+    font-size: 12px;
+    line-height: 12px;
+    margin: 5px auto;
+}

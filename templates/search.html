@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}search{% endblock %}
+
+{% block content %}
+	<div id="header">
+		<span>搜索结果：</span>
+		<div id="searchBar">
+			<form action="/search/" method="post">
+				<div class="field">
+				{{ form.search.errors }}
+				<label for="id_subject">搜索:</label>
+				{{ form.search }}
+				<input type="submit" value="搜索" title="Search" id="search_btn">
+				</div>		
+			</form>
+		</div>
+	</div>
+	{% if not form.search.errors %}
+	{% include "msglist.inc.html" %}
+	{% else %}
+	<p>请重新搜索</p>
+	{% endif %}	
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block title %}chat_room{% endblock %}
+
+{% block js %}
+	<script type="text/javascript" src="/static/js/jquery-1.5.2.min.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.timers.js"></script>
+	<script type="text/javascript" src="/static/js/main.js"></script>
+{% endblock %}
+
+{% block content %}
+	
+{% if error %}
+	<p style="color: red;">请输入消息</p>
+{% endif %}
+{% if form.errors %}
+	<p style="color: red;">
+		Please correct the error{{ form.errors|pluralize }} below.
+	</p>
+{% endif %}
+
+	<button type="button" id="refresh">请求数据</button>
+	<div id="header">
+		<div id="searchBar">
+			<form action="/search/" method="post">
+				<div class="field">
+				{{ form.search.errors }}
+				<label for="id_subject">搜索:</label>
+				{{ form.search }}
+				<input type="submit" value="搜索" title="Search" id="search_btn">
+				</div>		
+			</form>
+		</div>
+	</div>
+	<div id="wrapper">
+		<div id="main-content">
+			<div id="chatBox">
+				<form id="messageForm" name="messageForm" action="" method="post">
+					<label for="id_subject">话题:</label>
+					<input type="text" name="title" class="text" id="title" />
+					<textarea name="message" id="message"></textarea>
+					<input type="hidden" name="msg_id" id="msg_id" />
+					<input type="hidden" name="user_id" id="user_id" />
+					<input class="button" name='submit' type="submit" value="POST!" />
+				</form>
+			</div>
+			<div id="chatList">
+			<ul>
+			{% for msg in msgs %} 
+				<li id="{{msg.pk}}" class="clearit">
+					<div class="icon">
+						<img src="{{ msg.user.get_profile.profile_img.url }}" class="avatar" align="absmiddle" />
+					</div>
+					<div class="bubble">
+						<div class="msg-header">
+							<span class="screen-name">{{msg.user.username}}</span>
+							{% if msg.title %}
+							:<span class="title" id="title_{{msg.pk}}"><a class="add-title" href="javascript:add_title('{{msg.title}}')">{{msg.title}}</a></span>
+							{% endif %}
+							{% if msg.fav_num %}
+							<span class="favnum">{{msg.fav_num}} fav</span>
+							{% endif %}
+						</div>
+						<div id="content_{{msg.pk}}"  class="content" >{{msg.content}}</div>
+						<div class="time">
+							<span class="timestamp">{{msg.date|date:"Y-m-d H:i:s"}}</span>
+							<a title="Reply" id="reply_num" class="reply-action" href="javascript:reply({{msg.pk}},{{msg.user.pk}},'{{msg.user.username}}');"><b>回复</b></a>
+							<a title="Quote" id="quote_num" class="quote-action" href="javascript:quote('{{msg.user.username}}','{{msg.date|date:"Y-m-d H:i:s"}}',{{msg.pk}});"><b>引用</b></a>
+							<a title="Fav" id="fav_num" class="fav-action" href="/fav/?msg_id={{msg.pk}}"><b>收藏</b></a>
+						</div>
+						{% if msg.reply_msg %}
+						<div class="in_reply_to">					
+							<a href="/statuses/?msg_id={{msg.pk}}">in replay to</a>
+						</div>
+						{% endif %}
+					</div>	
+				</li> 
+			{% endfor %}	
+			</ul>
+			</div>	
+		</div>
+		<div id="dashboard">
+		{% for title in titles|slice:'10' %}
+			<li class="title-item ">
+				<a class="title-link" href="/search/title/{{title}}/">{{title}}</a>
+				<a class="add-title" href="javascript:add_title('{{title}}')">添加标题</a>
+			</li>
+		{% endfor %}
+		</div>
+	</div>	
+{% endblock %}

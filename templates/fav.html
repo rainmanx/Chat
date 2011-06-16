@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}favorite{% endblock %}
+
+{% block content %}
+{% if msgs %}
+	<div id="header"><p>收藏的信息</p></div>
+	{% include "msglist.inc.html" %}
+{% else %}
+	{% if favs|length == 0 %}
+	<div id="header">
+	<p>你没有收藏消息</p>
+	<a href="/">返回</a>
+	</div>
+	{% else %}
+	<div id="header">
+	<p>你已收藏本条消息</p>
+	<a href="/">返回</a>
+	</div>
+	{% endif %}
+{% endif %}
+{% endblock %}

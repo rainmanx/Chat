@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}profile{% endblock %}
+
+{% block content %}
+<div id="header">
+<p>我的账号</p>
+<form action="/upload/" method="post" enctype="multipart/form-data">
+	<input type="file" name="image" />
+	<input type="submit" value="上传图片" name="icon_submit">
+</form>	
+</div>
+{% endblock %}
